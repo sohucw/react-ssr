@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "sohucw",
+      "script": "./server/server.js",
+      "env_production": {
+        "NODE_ENV": "production",
+        "HOST": "localhost"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": "sohucw",
+      "repo": "https://github.com/sohucw/react-ssr.git",
+      "ref": "origin/master",
+      "path": "/root/deploy/work",
+      "post-deploy": "npm install && npm run deploy && pm2 startOrRestart ecosystem.json --env production"
+    }
+  }
+}
